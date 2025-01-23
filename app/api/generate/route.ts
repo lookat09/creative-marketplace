@@ -17,7 +17,7 @@ export async function POST(req: Request) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer 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`, // Inserisci la tua chiave API
+          Authorization: `Bearer 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`, // Inserisci la tua chiave API
         },
         body: JSON.stringify({
           model: "gpt-3.5-turbo", // Modello gpt-3.5-turbo
@@ -31,8 +31,17 @@ export async function POST(req: Request) {
     }
 
     if (!gptResponse.ok) {
+      const errorDetails = await gptResponse.json().catch(() => ({
+        error: "Unable to parse error response",
+      }));
+
+      console.error("GPT API Error Response:", errorDetails);
+
       return NextResponse.json(
-        { error: "Failed to generate content" },
+        {
+          error: "Failed to generate content",
+          details: errorDetails,
+        },
         { status: gptResponse.status }
       );
     }
@@ -57,7 +66,7 @@ export async function POST(req: Request) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer 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`, // Inserisci la tua chiave API
+          Authorization: `Bearer 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`, // Inserisci la tua chiave API
         },
         body: JSON.stringify({
           prompt: prompt, // Usa lo stesso prompt per generare l'immagine
