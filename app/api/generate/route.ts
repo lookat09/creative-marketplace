@@ -17,7 +17,7 @@ export async function POST(req: Request) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer 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`, // Inserisci la tua chiave API
+          Authorization: `Bearer ${process?.env?.OPEN_AI_KEY}`, // Inserisci la tua chiave API
         },
         body: JSON.stringify({
           model: "gpt-3.5-turbo", // Modello gpt-3.5-turbo
@@ -66,7 +66,7 @@ export async function POST(req: Request) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer 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`, // Inserisci la tua chiave API
+          Authorization: `Bearer ${process?.env?.OPEN_AI_KEY}`, // Inserisci la tua chiave API
         },
         body: JSON.stringify({
           prompt: prompt, // Usa lo stesso prompt per generare l'immagine
